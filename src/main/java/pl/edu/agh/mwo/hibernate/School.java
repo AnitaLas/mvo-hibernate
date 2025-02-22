@@ -2,7 +2,6 @@ package pl.edu.agh.mwo.hibernate;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -59,8 +58,6 @@ public class School {
         schoolClasses.remove(schoolClass);
     }
 
-
-    
     @Override
     public String toString() {
         return "School: " + name + " (" + address + ")";

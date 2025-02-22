@@ -20,11 +20,11 @@ public class SchoolClass {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "class_id")
-
     private Set<Student> students = new HashSet<>();
 
     @ManyToMany(mappedBy = "classes", cascade = {CascadeType.PERSIST,
             CascadeType.MERGE})
+   // @ManyToMany(mappedBy = "classes", cascade = {CascadeType.ALL})
     private Set<Teacher> teachers = new HashSet<>();
 
     public long getId() {
@@ -65,6 +65,10 @@ public class SchoolClass {
 
     public void addStudent(Student student){
         this.students.add(student);
+    }
+
+    public void removeStudent(Student student) {
+        students.remove(student);
     }
 
     public Set<Teacher> getTeachers(){

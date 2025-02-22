@@ -9,7 +9,6 @@ import java.util.Set;
 @Table(name = "teachers")
 public class Teacher {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -21,13 +20,13 @@ public class Teacher {
     private String pesel;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+   // @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "schoolClasses_teachers",
             joinColumns = @JoinColumn(name = "teacher_id"),
             inverseJoinColumns = @JoinColumn(name = "schoolClass_id"))
 
     private Set<SchoolClass> classes = new HashSet<>();
-
 
     public long getId() {
         return id;
@@ -72,10 +71,6 @@ public class Teacher {
     public  Set<SchoolClass> getSchoolClass(){
         return classes;
     }
-
-
-
-
 
     @Override
     public String toString() {

@@ -20,9 +20,8 @@ public class Student {
     @Column
     private String pesel;
 
-
     public long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(long id) {
@@ -37,20 +36,12 @@ public class Student {
         this.name = name;
     }
 
-    public void setSurame(String surname) {
-        this.surname = surname;
-    }
-
-    public void setClassId(String name) {
-        this.class_id = class_id;
-    }
-
-    public BigInteger getClassId() {
-        return this.class_id;
-    }
-
     public String getSurname() {
         return this.surname;
+    }
+
+    public void setSurame(String surname) {
+        this.surname = surname;
     }
 
     public String getPesel() {
@@ -61,9 +52,16 @@ public class Student {
         this.pesel = pesel;
     }
 
+    public BigInteger getClassId() {
+        return this.class_id;
+    }
+
+    public void setClassId(String name) {
+        this.class_id = class_id;
+    }
 
     @Override
     public String toString() {
-        return "            Student name: " + name + " (surname: " + surname + ", pesel " + pesel + ")";
+        return "            Student: " + name + " " + surname + " (" + pesel + ")";
     }
 }
