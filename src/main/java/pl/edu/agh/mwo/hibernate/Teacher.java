@@ -20,7 +20,7 @@ public class Teacher {
     private String pesel;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-   // @ManyToMany(cascade = {CascadeType.ALL})
+    //@ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "schoolClasses_teachers",
             joinColumns = @JoinColumn(name = "teacher_id"),

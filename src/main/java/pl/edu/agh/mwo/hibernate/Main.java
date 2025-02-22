@@ -18,7 +18,7 @@ public class Main {
         //main.printTeachersPoint6();
         //main.printTeachersPoint7();
 
-        //main.cascadeTest();
+        main.cascadeTest();
         //main.executeQueries();
 
         // Test -> CascadeType.ALL
@@ -43,16 +43,16 @@ public class Main {
         //query1();
 
         query2(); // delete shool
-        deleteShoolClass(); // id = 4
+        deleteShoolClasses(); // id = 4
 
         //query3();
         //query4();
         //query5();
         //query6();
 
-        // Test -> CascadeType.ALL
-        /*deleteShoolClass();
-        query2a();*/
+        // CascadeType.ALL
+        //query2a(); // delete shool
+        //deleteShoolClass(); // id = 4
     }
 
     private void printSchools() {
@@ -100,7 +100,7 @@ public class Main {
         }
     }
 
-    private void deleteShoolClass() {
+    private void deleteShoolClasses() {
         String hql = "From SchoolClass c Where c.id=4";
         Query<SchoolClass> query = session.createQuery(hql, SchoolClass.class);
         SchoolClass schoolClass = query.uniqueResult();
@@ -172,9 +172,8 @@ public class Main {
     }
 
     private void cascadeTest2() {
-        /* @ManyToMany(cascade = {CascadeType.ALL})
-          @ManyToMany(mappedBy = "classes", cascade = {CascadeType.ALL})*/
-
+        /* Teacher -> @ManyToMany(cascade = {CascadeType.ALL})
+         SchoolClass -> @ManyToMany(mappedBy = "classes", cascade = {CascadeType.ALL})*/
         // 1
         School newSchool1 = new School();
         newSchool1.setName("ns_1");
@@ -312,10 +311,7 @@ public class Main {
     }
 
     private void query2a() {
-        String[] shoolNames = {"ns_1", "ns_2"};
-
-        for (String name : shoolNames) {
-            String hql = "from School s where s.name=" + "'" + name + "'";
+            String hql = "from School s where s.name= 'ns_1'";
             Query<School> query = session.createQuery(hql, School.class);
             List<School> results = query.list();
 
@@ -325,5 +321,4 @@ public class Main {
             }
             transaction.commit();
         }
-    }
 }

@@ -24,7 +24,7 @@ public class SchoolClass {
 
     @ManyToMany(mappedBy = "classes", cascade = {CascadeType.PERSIST,
             CascadeType.MERGE})
-   // @ManyToMany(mappedBy = "classes", cascade = {CascadeType.ALL})
+    //@ManyToMany(mappedBy = "classes", cascade = {CascadeType.ALL})
     private Set<Teacher> teachers = new HashSet<>();
 
     public long getId() {
